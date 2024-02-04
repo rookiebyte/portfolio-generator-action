@@ -4,7 +4,7 @@
 
     <groupId>com.rookitebyte</groupId>
     <artifactId>github-portfolio-generator</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>GithubPortfolioGenerator</name>
@@ -199,4 +199,3 @@
         </plugins>
     </build>
 </project>
-
