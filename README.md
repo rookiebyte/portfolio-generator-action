@@ -1,7 +1,6 @@
 ---
-name: MeerkatPatrol
-type: android-tv-app
-tags: [android_tv, kotlin, rtsp, jetpack_compose, exoplayer]
+name: Portfolio generator action
+tags: [java, github_action. ci/cd]
 ---
 # Github portfolio generator
 
