@@ -1,8 +1,8 @@
 name: Docker image publish
 
 on:
-  release:
-    types: [created]
+  push:
+    branches: ['main']
 
 env:
   REGISTRY: ghcr.io
@@ -44,7 +44,8 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v3
       with:
-        file: Dockerfile.base
         push: true
+        context: .
+        file: Dockerfile.base
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}

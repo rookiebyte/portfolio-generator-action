@@ -1,0 +1,4 @@
+FROM eclipse-temurin:17-jre-alpine
+
+COPY target/github-portfolio-generator-jar-with-dependencies.jar gpg.jar
+ENTRYPOINT ["java", "-jar", "gpg.jar"]
