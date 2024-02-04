@@ -1,0 +1,21 @@
+name: 'Rookie byte github portfolio generator'
+description: 'Generate portfolio with fetched project from github'
+inputs:
+  file-name:
+    description: 'index.html file'
+    required: true
+    default: 'index.html'
+  output-file:
+    description: 'output path'
+    required: true
+    default: 'output directory'
+  username:
+    description: 'github username'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - -f ${{ inputs.file-name }}
+    - -o ${{ inputs.output-file }}
+    - -n ${{ inputs.username }}
