@@ -1,1 +1,1 @@
-from ghcr.io/rookiebyte/portfolio-generator-github-action
+from ghcr.io/rookiebyte/portfolio-generator-action:latest
