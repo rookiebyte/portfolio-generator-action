@@ -6,6 +6,7 @@ import com.google.common.base.Charsets;
 import com.google.common.io.CharStreams;
 import com.rookitebyte.github.exception.GithubClientException;
 import org.apache.hc.core5.http.ClassicHttpResponse;
+import org.apache.hc.core5.http.HttpStatus;
 import org.apache.hc.core5.http.io.HttpClientResponseHandler;
 
 import java.io.IOException;
@@ -29,7 +30,7 @@ final class ResponseHandlerFactory {
     }
 
     private static void validateStatus(int code) {
-        if (code != 200) {
+        if (code != HttpStatus.SC_OK) {
             throw new GithubClientException("Response code is not ok");
         }
     }

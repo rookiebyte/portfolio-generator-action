@@ -13,7 +13,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
-public class GithubClient {
+public final class GithubClient {
 
     private static final String GITHUB_URI = "api.github.com";
 
@@ -67,6 +67,11 @@ public class GithubClient {
 
     private <T> T executeRequest(ClassicHttpRequest request, Class<T> classType) {
         try {
+            /*todo: kina useless, I need to remove it. But I need higher rates*/
+            var token = System.getenv("GITHUB_TOKEN");
+            if (token != null && !token.isBlank()) {
+                request.addHeader(HttpHeaders.AUTHORIZATION, "bearer " + token);
+            }
             var handler = ResponseHandlerFactory.handlerByType(classType);
             return httpClient.execute(request, handler);
         } catch (IOException ex) {
