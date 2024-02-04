@@ -5,6 +5,7 @@ import com.rookitebyte.github.GithubClient;
 import com.rookitebyte.github.Repository;
 import com.rookitebyte.github.exception.GithubClientException;
 import com.rookitebyte.template.ThymeleafConfiguration;
+import org.apache.commons.io.FileUtils;
 import org.commonmark.ext.front.matter.YamlFrontMatterExtension;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
@@ -63,8 +64,13 @@ class GeneratorService {
     }
 
     private void copyTo(Path path, Path output) throws IOException {
-        var target = output.resolve(path.getFileName());
-        Files.copy(path, target);
+        var target = output.resolve(path.getFileName()).toFile();
+        var file = path.toFile();
+        if(file.isFile()) {
+            FileUtils.copyFile(file, target);
+            return;
+        }
+        FileUtils.copyDirectory(file, target);
     }
 
     private boolean isFileToCopy(Path path, GenerateCommand command) {
