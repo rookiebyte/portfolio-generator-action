@@ -15,6 +15,16 @@ class GithubClientSpec extends Specification {
         when:
         var repositories = githubClient.fetchUsersRepositories("rookiebyte")
         then:
-        !repositories[0]?.defaultBranch()?.isEmpty()
+        !repositories[0]?.name()?.isEmpty()
+    }
+
+    def "fetch repository readme content"() {
+        given:
+        var repository = githubClient.fetchUserRepository("rookiebyte", "meerkat-patrol-android-tv")
+        when:
+        var content = githubClient.fetchReadme(repository)
+        then:
+        !content?.empty
+        content.startsWith("---")
     }
 }

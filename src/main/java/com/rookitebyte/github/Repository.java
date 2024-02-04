@@ -3,13 +3,10 @@ package com.rookitebyte.github;
 public record Repository(
 
         String name,
-        String defaultBranch
+        String url
 ) {
 
-    String buildLinkToReadme(String owner) {
-        return "https://raw.githubusercontent.com/" + owner
-                + "/" + name
-                + "/" + defaultBranch
-                + "/README.md";
+    String buildLinkToReadme() {
+        return url + "/contents/README.md";
     }
 }
